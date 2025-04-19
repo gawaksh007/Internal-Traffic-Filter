@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html><body>
+  <label>
+    <input type="checkbox" id="toggle"> Block GA4 hits
+  </label>
+  <script>
+    const cb = document.getElementById("toggle");
+    // Load initial state
+    chrome.storage.sync.get("blockEnabled", ({ blockEnabled }) => {
+      cb.checked = blockEnabled;
+    });
+    // On toggle, save state
+    cb.addEventListener("change", () => {
+      chrome.storage.sync.set({ blockEnabled: cb.checked });
+    });
+  </script>
+</body></html>

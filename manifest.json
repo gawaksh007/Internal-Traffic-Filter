@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "GA4 Internal Blocker (MVP)",
+  "version": "0.0.1",
+  "permissions": [
+    "storage",
+    "declarativeNetRequest"
+  ],
+  "host_permissions": [
+    "*://www.google-analytics.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["content-script.js"],
+    "run_at": "document_start"
+  }]
+}
